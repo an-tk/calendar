@@ -8,6 +8,7 @@ module CalendarHelper
     { 
       :year => @year,
       :month => @month,
+      :first_day_of_week => @first_day_of_week,
       :event_strips => @event_strips,
       :month_name_text => I18n.localize(@shown_month, :format => "%B %Y"),
       :previous_month_text => "<< " + month_link(@shown_month.prev_month),
@@ -18,7 +19,7 @@ module CalendarHelper
     # args is an argument hash containing :event, :day, and :options
     calendar event_calendar_opts do |args|
       event = args[:event]
-      %(<a href="/events/#{event.id}" title="#{h(event.name)}">#{h(event.name)}</a>)
+      link_to(event.name, edit_event_path(event))
     end
   end
 end
