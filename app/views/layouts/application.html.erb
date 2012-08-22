@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Calendar</title>
+  <title>Calendar app.</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="container">
+<i class="icon-user"> <%= current_user.name.blank? ? current_user.name : current_user.email %></i>
+<ul class="nav nav-pills">
+  <%= nav_link("Calendar", root_path) %>
+  <%= nav_link("New event", new_event_path) %>
+  <%= nav_link("Edit profile", edit_user_registration_path) %>
 
+</ul>
 <%= yield %>
 
 </body>

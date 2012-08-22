@@ -26,7 +26,7 @@ gem 'jquery-rails'
 gem 'devise'
 
 gem 'event-calendar', :require => 'event_calendar'
-
+gem "twitter-bootstrap-rails", :group => :assets
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

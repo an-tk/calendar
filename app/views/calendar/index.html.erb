@@ -2,9 +2,5 @@
 <%= stylesheet_link_tag "event_calendar" %>
 
 <h1>Calendar</h1>
-<div class="profile">
-  <%= "Logged in as: <b>#{current_user.name}</b>".html_safe %>
-  <%= link_to "Edit", edit_user_registration_path %>
-</div>
 
 <%= raw(event_calendar) %>
