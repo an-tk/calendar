@@ -30,6 +30,13 @@
       <%= f.date_select :end_at %>
     </div>
   </div>
+    <div class="control-group">
+    <%= f.label :repeat, :class=>"control-label" %>
+    <div class="controls">
+      <%= f.select :repeat, options_for_select(Event::REPEAT.map{|r| [r, Event::REPEAT.index(r)]}, f.object.repeat ) %>
+    </div>
+  </div>
+
   <%= f.submit :class => :btn %>
 
 <% end %>
