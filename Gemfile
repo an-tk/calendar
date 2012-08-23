@@ -24,9 +24,11 @@ end
 
 gem 'jquery-rails'
 gem 'devise'
+gem "cancan"
 
 gem 'event-calendar', :require => 'event_calendar'
 gem "twitter-bootstrap-rails", :group => :assets
+gem 'date_validator'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

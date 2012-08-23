@@ -7,13 +7,34 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="container">
-<i class="icon-user"> <%= current_user.name.blank? ? current_user.name : current_user.email %></i>
-<ul class="nav nav-pills">
-  <%= nav_link("Calendar", root_path) %>
-  <%= nav_link("New event", new_event_path) %>
-  <%= nav_link("Edit profile", edit_user_registration_path) %>
 
-</ul>
+<% flash.each do |name, msg| %>
+  <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+    <a class="close" data-dismiss="alert">&#215;</a>
+    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+  </div>
+<% end %>
+
+<% if user_signed_in? %>
+
+  <i class="icon-user"> <%= user_name(current_user) %></i>
+
+  <ul class="nav nav-pills">
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        Calendar
+        <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <%= content_tag(:li, link_to("All events", root_path)) %>
+        <%= content_tag(:li, link_to("My events", root_path(:owner => current_user.to_param))) %>
+      </ul>
+    </li>
+    <%= nav_link("New event", new_event_path) %>
+    <%= nav_link("Edit profile", edit_user_registration_path) %>
+  </ul>
+
+<% end %>
 <%= yield %>
 
 </body>
