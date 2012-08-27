@@ -19,7 +19,8 @@ module CalendarHelper
     # args is an argument hash containing :event, :day, and :options
     calendar event_calendar_opts do |args|
       event = args[:event]
-       if event.user == current_user
+
+      if can? :edit, event
         link_to(' ' + event.name, edit_event_path(event), :class => 'icon-wrench')
       else
         link_to(' ' + event.name, event_path(event), :class => 'icon-eye-open')
